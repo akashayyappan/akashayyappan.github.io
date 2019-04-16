@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(isset($_POST['login'])){
+	echo "<script>alert('Invalid Details Or Account Not Confirmed');</script>";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +65,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button class="login100-form-btn" name="login" type="submit">
 								Login
 							</button>
 						</div>
