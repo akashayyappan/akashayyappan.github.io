@@ -1,15 +1,7 @@
-<?php
-session_start();
-if(isset($_POST['login'])){
-	echo "<script>alert('Invalid Details Or Account Not Confirmed');</script>";
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V4</title>
+	<title>Akash AYyappan</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -42,7 +34,7 @@ if(isset($_POST['login'])){
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 				<form method="post" class="login100-form validate-form">
 					<span class="login100-form-title p-b-49">
-						Login
+						Welcome
 					</span>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
