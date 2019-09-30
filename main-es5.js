@@ -245,10 +245,14 @@ var BasicFormComponent = /** @class */ (function () {
             allowSearchFilter: true
         };
         var element = document.getElementsByClassName("form-content")[0];
-        this.formHeight = { 'width': '100%', 'height': element.scrollHeight + 'px' };
+        var height = element.scrollHeight;
+        if (height < 200) {
+            height = 240;
+        }
+        this.formHeight = { 'width': '100%', 'height': height + 'px' };
         var mq = window.matchMedia("(max-width: 800px");
         if (mq.matches) {
-            this.formHeight = { 'width': '100%', 'height': element.scrollHeight - 40 + 'px' };
+            this.formHeight = { 'width': '100%', 'height': height - 40 + 'px' };
         }
     };
     BasicFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

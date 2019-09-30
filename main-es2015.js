@@ -235,10 +235,14 @@ let BasicFormComponent = class BasicFormComponent {
             allowSearchFilter: true
         };
         let element = document.getElementsByClassName("form-content")[0];
-        this.formHeight = { 'width': '100%', 'height': element.scrollHeight + 'px' };
+        let height = element.scrollHeight;
+        if (height < 200) {
+            height = 240;
+        }
+        this.formHeight = { 'width': '100%', 'height': height + 'px' };
         let mq = window.matchMedia("(max-width: 800px");
         if (mq.matches) {
-            this.formHeight = { 'width': '100%', 'height': element.scrollHeight - 40 + 'px' };
+            this.formHeight = { 'width': '100%', 'height': height - 40 + 'px' };
         }
     }
 };
