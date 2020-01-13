@@ -1,0 +1,41 @@
+<!-- Navbar -->
+<nav class="navbar navbar-dark">
+    <a href="#" class="navbar-brand text-dark">ASH</a>
+    <ul class="navbar-nav">
+        <li class="nav-item" (click)="onLogin()"><a href="#">LOGIN</a></li>
+    </ul>
+</nav>
+
+<!-- Modal -->
+<div class="modal" [ngClass]="modal ? 'd-block' : 'd-none'" (click)="cs.setModal(false)">
+</div>
+
+<!-- Login Window-->
+<div class="l-window" [ngClass]="loginWindow ? 'd-block' : 'd-none'">
+    <div class="l-head">
+        <h3>LOGIN</h3>
+    </div>
+    <div class="l-body col-7 m-auto">
+        <form [formGroup]="loginForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <div class="input" [ngClass]="loginForm.controls.email.touched ? loginForm.controls.email.valid ? '' : 'input-error' : ''">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <input type="email" id="email" formControlName="email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input" [ngClass]="loginForm.controls.password.touched ? loginForm.controls.password.valid ? '' : 'input-error' : ''">
+                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                    <input type="password" id="password" formControlName="password">
+                </div>
+            </div>
+            <div class="form-group float-right">
+                <button class="btn btn-primary" (click)="onLoginFormSubmit()">LOGIN</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
