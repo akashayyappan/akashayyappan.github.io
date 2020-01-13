@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from './service/common.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import Validator from "validator";
+import Validator from "node_modules/validator";
 
 @Component({
   selector: 'app-root',
