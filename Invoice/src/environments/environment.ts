@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serviceURL: "http://inv-service-invoice.apps.us-east-1.starter.openshift-online.com/"
+  serviceURL: "https://cors-anywhere.herokuapp.com/http://inv-service-invoice.apps.us-east-1.starter.openshift-online.com/"
 };
 
 /*

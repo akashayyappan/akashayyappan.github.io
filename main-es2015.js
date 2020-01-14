@@ -32,7 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- Navbar -->\n<nav class=\"navbar navbar-dark\">\n    <a href=\"#\" class=\"navbar-brand text-dark\">ASH</a>\n    <ul class=\"navbar-nav\">\n        <li class=\"nav-item\" (click)=\"onLogin()\"><a href=\"#\">LOGIN</a></li>\n    </ul>\n</nav>\n\n<!-- Modal -->\n<div class=\"modal\" [ngClass]=\"modal ? 'd-block' : 'd-none'\" (click)=\"cs.setModal(false)\">\n</div>\n\n<!-- Login Window-->\n<div class=\"l-window\" [ngClass]=\"loginWindow ? 'd-block' : 'd-none'\">\n    <div class=\"l-head\">\n        <h3>LOGIN</h3>\n    </div>\n    <div class=\"l-body col-7 m-auto\">\n        <form [formGroup]=\"loginForm\">\n            <div class=\"form-group\">\n                <label for=\"email\">Email:</label>\n                <div class=\"input\" [ngClass]=\"loginForm.controls.email.touched ? loginForm.controls.email.valid ? '' : 'input-error' : ''\">\n                    <i class=\"fa fa-user\" aria-hidden=\"true\"></i>\n                    <input type=\"email\" id=\"email\" formControlName=\"email\">\n                </div>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"password\">Password</label>\n                <div class=\"input\" [ngClass]=\"loginForm.controls.password.touched ? loginForm.controls.password.valid ? '' : 'input-error' : ''\">\n                    <i class=\"fa fa-unlock-alt\" aria-hidden=\"true\"></i>\n                    <input type=\"password\" id=\"password\" formControlName=\"password\">\n                </div>\n            </div>\n            <div class=\"form-group float-right\">\n                <button class=\"btn btn-primary\" (click)=\"onLoginFormSubmit()\">LOGIN</button>\n            </div>\n        </form>\n    </div>\n</div>\n\n<router-outlet></router-outlet>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- Navbar -->\n<nav class=\"navbar navbar-dark\">\n    <a href=\"#\" class=\"navbar-brand text-dark\">ASH</a>\n    <ul class=\"nav navbar-nav flex-row\">\n        <li class=\"nav-item p-1 text-dark\" *ngIf=\"isUserLoggedIn\"><a href=\"#\">{{ this.cs.NAME }}</a></li>\n        <li class=\"nav-item p-1\" (click)=\"onLogin()\" *ngIf=\"!isUserLoggedIn\"><a href=\"#\">LOGIN</a></li>\n        <li class=\"nav-item p-1\" (click)=\"onLogout()\" *ngIf=\"isUserLoggedIn\">\n            <a href=\"#\"><i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i></a>\n        </li>   \n    </ul>\n</nav>\n\n<!-- Info Message -->\n<div class=\"info-message\" [ngClass]=\"showInfoMessage ? 'show-info' : ''\">\n    <div *ngIf=\"!infoMessageType\" class=\"error\"><h6>ERROR</h6><p>{{ infoMessage }}</p></div>\n    <div *ngIf=\"infoMessageType\" class=\"info\"><h6>INFO</h6><p>{{ infoMessage }}</p></div>\n</div>\n\n<!-- Modal -->\n<div class=\"modal\" [ngClass]=\"modal ? 'd-block' : 'd-none'\" (click)=\"cs.setModal(false)\"></div>\n\n<!-- Login Window-->\n<div class=\"l-window\" [ngClass]=\"loginWindow ? 'd-block' : 'd-none'\">\n    <div class=\"l-head\">\n        <h3>LOGIN</h3>\n    </div>\n    <div class=\"l-body col-10 m-auto\">\n        <form [formGroup]=\"loginForm\">\n            <div class=\"form-group\">\n                <label for=\"email\">Email:</label>\n                <div class=\"input\" [ngClass]=\"loginForm.controls.email.touched ? loginForm.controls.email.valid ? '' : 'input-error' : ''\">\n                    <i class=\"fa fa-user\" aria-hidden=\"true\"></i>\n                    <input type=\"email\" id=\"email\" formControlName=\"email\">\n                </div>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"password\">Password</label>\n                <div class=\"input\" [ngClass]=\"loginForm.controls.password.touched ? loginForm.controls.password.valid ? '' : 'input-error' : ''\">\n                    <i class=\"fa fa-unlock-alt\" aria-hidden=\"true\"></i>\n                    <input type=\"password\" id=\"password\" formControlName=\"password\">\n                </div>\n            </div>\n            <div class=\"form-group float-right\">\n                <button class=\"btn btn-primary\" (click)=\"onLoginFormSubmit()\">LOGIN</button>\n            </div>\n        </form>\n    </div>\n</div>\n\n<router-outlet></router-outlet>");
 
 /***/ }),
 
@@ -328,7 +328,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("nav{\r\n    box-shadow: 0 0 5px 5px #00000090;\r\n}\r\n\r\nnav a{\r\n    text-decoration: none;\r\n}\r\n\r\n.modal{\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: #00000080;\r\n    z-index: 1000;\r\n}\r\n\r\n.l-window{\r\n    position: absolute;\r\n    width: 50%;\r\n    height: 50%;\r\n    top: 50%;\r\n    left: 50%;\r\n    -webkit-transform: translate(-50%,-50%);\r\n            transform: translate(-50%,-50%);\r\n    background-color: white;\r\n    z-index: 1001;\r\n    border-radius: 10px;\r\n}\r\n\r\n.l-window .l-head{\r\n    background-color: cornflowerblue;\r\n    border-radius: 10px 10px 0 0;\r\n}\r\n\r\n.l-window .l-head h3{\r\n    padding: 15px;\r\n    color: white;\r\n}\r\n\r\nform .input{\r\n    width: auto;\r\n    border: 1px solid #00000075;\r\n    border-radius: 5px;\r\n}\r\n\r\nform .input i{\r\n    padding: 10px;\r\n    border-radius: 5px 0 0 5px;\r\n    background-color: #00000040;\r\n}\r\n\r\nform input{\r\n    width: auto;\r\n    margin-left: 10px;\r\n    border: none;\r\n    outline: none;\r\n}\r\n\r\n.input-valid{\r\n    border-color: #00000075;\r\n}\r\n\r\n.input-error{\r\n    border-color: red !important;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxpQ0FBaUM7QUFDckM7O0FBRUE7SUFDSSxxQkFBcUI7QUFDekI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsV0FBVztJQUNYLFlBQVk7SUFDWiwyQkFBMkI7SUFDM0IsYUFBYTtBQUNqQjs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixVQUFVO0lBQ1YsV0FBVztJQUNYLFFBQVE7SUFDUixTQUFTO0lBQ1QsdUNBQStCO1lBQS9CLCtCQUErQjtJQUMvQix1QkFBdUI7SUFDdkIsYUFBYTtJQUNiLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLGdDQUFnQztJQUNoQyw0QkFBNEI7QUFDaEM7O0FBRUE7SUFDSSxhQUFhO0lBQ2IsWUFBWTtBQUNoQjs7QUFFQTtJQUNJLFdBQVc7SUFDWCwyQkFBMkI7SUFDM0Isa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksYUFBYTtJQUNiLDBCQUEwQjtJQUMxQiwyQkFBMkI7QUFDL0I7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsaUJBQWlCO0lBQ2pCLFlBQVk7SUFDWixhQUFhO0FBQ2pCOztBQUVBO0lBQ0ksdUJBQXVCO0FBQzNCOztBQUVBO0lBQ0ksNEJBQTRCO0FBQ2hDIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJuYXZ7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgNXB4IDVweCAjMDAwMDAwOTA7XHJcbn1cclxuXHJcbm5hdiBhe1xyXG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG59XHJcblxyXG4ubW9kYWx7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMwMDAwMDA4MDtcclxuICAgIHotaW5kZXg6IDEwMDA7XHJcbn1cclxuXHJcbi5sLXdpbmRvd3tcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHdpZHRoOiA1MCU7XHJcbiAgICBoZWlnaHQ6IDUwJTtcclxuICAgIHRvcDogNTAlO1xyXG4gICAgbGVmdDogNTAlO1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwtNTAlKTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gICAgei1pbmRleDogMTAwMTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbn1cclxuXHJcbi5sLXdpbmRvdyAubC1oZWFke1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogY29ybmZsb3dlcmJsdWU7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4IDEwcHggMCAwO1xyXG59XHJcblxyXG4ubC13aW5kb3cgLmwtaGVhZCBoM3tcclxuICAgIHBhZGRpbmc6IDE1cHg7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbmZvcm0gLmlucHV0e1xyXG4gICAgd2lkdGg6IGF1dG87XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjMDAwMDAwNzU7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XHJcbn1cclxuXHJcbmZvcm0gLmlucHV0IGl7XHJcbiAgICBwYWRkaW5nOiAxMHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogNXB4IDAgMCA1cHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwMDAwNDA7XHJcbn1cclxuXHJcbmZvcm0gaW5wdXR7XHJcbiAgICB3aWR0aDogYXV0bztcclxuICAgIG1hcmdpbi1sZWZ0OiAxMHB4O1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG4gICAgb3V0bGluZTogbm9uZTtcclxufVxyXG5cclxuLmlucHV0LXZhbGlke1xyXG4gICAgYm9yZGVyLWNvbG9yOiAjMDAwMDAwNzU7XHJcbn1cclxuXHJcbi5pbnB1dC1lcnJvcntcclxuICAgIGJvcmRlci1jb2xvcjogcmVkICFpbXBvcnRhbnQ7XHJcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("nav{\r\n    box-shadow: 0 0 5px 5px #00000090;\r\n}\r\n\r\nnav a{\r\n    text-decoration: none;\r\n}\r\n\r\n.modal{\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: #00000080;\r\n    z-index: 1000;\r\n}\r\n\r\n.info-message{\r\n    position: absolute;\r\n    top: -40%;\r\n    right: 0;\r\n    margin: 2.5%;\r\n    width: 15%;\r\n    background-color: #fff;\r\n    z-index: 2000;\r\n    -webkit-transition: 0.5s;\r\n    transition: 0.5s;\r\n    opacity: 0;\r\n    border: 1px solid #333;\r\n    border-radius: 8px;\r\n}\r\n\r\n.info-message h6{\r\n    text-align: left;\r\n    padding: 5px;\r\n    color: white;\r\n    border-radius: 8px 8px 0 0;\r\n}\r\n\r\n.info-message .error h6{\r\n    background-color: red;\r\n}\r\n\r\n.info-message .info h6{\r\n    background-color: cornflowerblue;\r\n}\r\n\r\n.info-message p{\r\n    padding: 6px;\r\n    -webkit-box-pack: center;\r\n            justify-content: center;\r\n    text-align: center;\r\n}\r\n\r\n.info-message .error{\r\n    color: red;\r\n}\r\n\r\n.info-message .info{\r\n    color: cornflowerblue;\r\n}\r\n\r\n.l-window{\r\n    position: absolute;\r\n    width: 40%;\r\n    top: 50%;\r\n    left: 50%;\r\n    -webkit-transform: translate(-50%,-50%);\r\n            transform: translate(-50%,-50%);\r\n    background-color: white;\r\n    z-index: 1001;\r\n    border-radius: 10px;\r\n}\r\n\r\n.l-window .l-head{\r\n    background-color: cornflowerblue;\r\n    border-radius: 10px 10px 0 0;\r\n}\r\n\r\n.l-window .l-head h3{\r\n    padding: 15px;\r\n    color: white;\r\n}\r\n\r\nform .input{\r\n    width: 100%;\r\n    border: 1px solid #00000075;\r\n    border-radius: 5px;\r\n}\r\n\r\nform .input i{\r\n    padding: 10px;\r\n    border-radius: 5px 0 0 5px;\r\n    background-color: #00000040;\r\n}\r\n\r\nform input{\r\n    width: calc(100% - 50px);\r\n    margin-left: 10px;\r\n    border: none;\r\n    outline: none;\r\n}\r\n\r\n.input-valid{\r\n    border-color: #00000075;\r\n}\r\n\r\n.input-error{\r\n    border-color: red !important;\r\n}\r\n\r\n.show-info{\r\n    opacity: 1;\r\n    top: 0%;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxpQ0FBaUM7QUFDckM7O0FBRUE7SUFDSSxxQkFBcUI7QUFDekI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsTUFBTTtJQUNOLE9BQU87SUFDUCxXQUFXO0lBQ1gsWUFBWTtJQUNaLDJCQUEyQjtJQUMzQixhQUFhO0FBQ2pCOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLFNBQVM7SUFDVCxRQUFRO0lBQ1IsWUFBWTtJQUNaLFVBQVU7SUFDVixzQkFBc0I7SUFDdEIsYUFBYTtJQUNiLHdCQUFnQjtJQUFoQixnQkFBZ0I7SUFDaEIsVUFBVTtJQUNWLHNCQUFzQjtJQUN0QixrQkFBa0I7QUFDdEI7O0FBRUE7SUFDSSxnQkFBZ0I7SUFDaEIsWUFBWTtJQUNaLFlBQVk7SUFDWiwwQkFBMEI7QUFDOUI7O0FBQ0E7SUFDSSxxQkFBcUI7QUFDekI7O0FBRUE7SUFDSSxnQ0FBZ0M7QUFDcEM7O0FBRUE7SUFDSSxZQUFZO0lBQ1osd0JBQXVCO1lBQXZCLHVCQUF1QjtJQUN2QixrQkFBa0I7QUFDdEI7O0FBRUE7SUFDSSxVQUFVO0FBQ2Q7O0FBRUE7SUFDSSxxQkFBcUI7QUFDekI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsVUFBVTtJQUNWLFFBQVE7SUFDUixTQUFTO0lBQ1QsdUNBQStCO1lBQS9CLCtCQUErQjtJQUMvQix1QkFBdUI7SUFDdkIsYUFBYTtJQUNiLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLGdDQUFnQztJQUNoQyw0QkFBNEI7QUFDaEM7O0FBRUE7SUFDSSxhQUFhO0lBQ2IsWUFBWTtBQUNoQjs7QUFFQTtJQUNJLFdBQVc7SUFDWCwyQkFBMkI7SUFDM0Isa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksYUFBYTtJQUNiLDBCQUEwQjtJQUMxQiwyQkFBMkI7QUFDL0I7O0FBRUE7SUFDSSx3QkFBd0I7SUFDeEIsaUJBQWlCO0lBQ2pCLFlBQVk7SUFDWixhQUFhO0FBQ2pCOztBQUVBO0lBQ0ksdUJBQXVCO0FBQzNCOztBQUVBO0lBQ0ksNEJBQTRCO0FBQ2hDOztBQUVBO0lBQ0ksVUFBVTtJQUNWLE9BQU87QUFDWCIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsibmF2e1xyXG4gICAgYm94LXNoYWRvdzogMCAwIDVweCA1cHggIzAwMDAwMDkwO1xyXG59XHJcblxyXG5uYXYgYXtcclxuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcclxufVxyXG5cclxuLm1vZGFse1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiAwO1xyXG4gICAgbGVmdDogMDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDAwMDgwO1xyXG4gICAgei1pbmRleDogMTAwMDtcclxufVxyXG5cclxuLmluZm8tbWVzc2FnZXtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogLTQwJTtcclxuICAgIHJpZ2h0OiAwO1xyXG4gICAgbWFyZ2luOiAyLjUlO1xyXG4gICAgd2lkdGg6IDE1JTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XHJcbiAgICB6LWluZGV4OiAyMDAwO1xyXG4gICAgdHJhbnNpdGlvbjogMC41cztcclxuICAgIG9wYWNpdHk6IDA7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjMzMzO1xyXG4gICAgYm9yZGVyLXJhZGl1czogOHB4O1xyXG59XHJcblxyXG4uaW5mby1tZXNzYWdlIGg2e1xyXG4gICAgdGV4dC1hbGlnbjogbGVmdDtcclxuICAgIHBhZGRpbmc6IDVweDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDhweCA4cHggMCAwO1xyXG59XHJcbi5pbmZvLW1lc3NhZ2UgLmVycm9yIGg2e1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmVkO1xyXG59XHJcblxyXG4uaW5mby1tZXNzYWdlIC5pbmZvIGg2e1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogY29ybmZsb3dlcmJsdWU7XHJcbn1cclxuXHJcbi5pbmZvLW1lc3NhZ2UgcHtcclxuICAgIHBhZGRpbmc6IDZweDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcblxyXG4uaW5mby1tZXNzYWdlIC5lcnJvcntcclxuICAgIGNvbG9yOiByZWQ7XHJcbn1cclxuXHJcbi5pbmZvLW1lc3NhZ2UgLmluZm97XHJcbiAgICBjb2xvcjogY29ybmZsb3dlcmJsdWU7XHJcbn1cclxuXHJcbi5sLXdpbmRvd3tcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHdpZHRoOiA0MCU7XHJcbiAgICB0b3A6IDUwJTtcclxuICAgIGxlZnQ6IDUwJTtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsLTUwJSk7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgIHotaW5kZXg6IDEwMDE7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG59XHJcblxyXG4ubC13aW5kb3cgLmwtaGVhZHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGNvcm5mbG93ZXJibHVlO1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTBweCAxMHB4IDAgMDtcclxufVxyXG5cclxuLmwtd2luZG93IC5sLWhlYWQgaDN7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG5mb3JtIC5pbnB1dHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgIzAwMDAwMDc1O1xyXG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xyXG59XHJcblxyXG5mb3JtIC5pbnB1dCBpe1xyXG4gICAgcGFkZGluZzogMTBweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDVweCAwIDAgNXB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDAwMDQwO1xyXG59XHJcblxyXG5mb3JtIGlucHV0e1xyXG4gICAgd2lkdGg6IGNhbGMoMTAwJSAtIDUwcHgpO1xyXG4gICAgbWFyZ2luLWxlZnQ6IDEwcHg7XHJcbiAgICBib3JkZXI6IG5vbmU7XHJcbiAgICBvdXRsaW5lOiBub25lO1xyXG59XHJcblxyXG4uaW5wdXQtdmFsaWR7XHJcbiAgICBib3JkZXItY29sb3I6ICMwMDAwMDA3NTtcclxufVxyXG5cclxuLmlucHV0LWVycm9ye1xyXG4gICAgYm9yZGVyLWNvbG9yOiByZWQgIWltcG9ydGFudDtcclxufVxyXG5cclxuLnNob3ctaW5mb3tcclxuICAgIG9wYWNpdHk6IDE7XHJcbiAgICB0b3A6IDAlO1xyXG59XHJcbiJdfQ== */");
 
 /***/ }),
 
@@ -369,10 +369,33 @@ let AppComponent = class AppComponent {
         this.cs._enableLoginWindow.subscribe(data => {
             this.loginWindow = data;
         });
+        this.cs._isLoggedIn.subscribe(data => {
+            this.isUserLoggedIn = data;
+        });
         this.loginForm = this.fb.group({
             email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required, this.validateEmail]],
             password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
         });
+        this.cs._infoMessage.subscribe(msg => {
+            if (!msg["msg"])
+                return;
+            if (msg["type"])
+                this.infoMessageType = true;
+            else
+                this.infoMessageType = false;
+            this.infoMessage = msg["msg"];
+            this.showInfoMessage = true;
+            setTimeout(() => {
+                this.showInfoMessage = false;
+            }, 3000);
+        });
+        if (window.localStorage.getItem("token")) {
+            this.cs.webServiceCall("get", "user/check").subscribe(data => {
+                this.cs.setUser(data);
+                this.cs.setUserLoggedIn(true);
+                this.cs.showInfoMessage("Logged in using last used credentilas", true);
+            });
+        }
     }
     validateEmail(con) {
         return node_modules_validator__WEBPACK_IMPORTED_MODULE_4___default.a.isEmail(con.value);
@@ -381,9 +404,21 @@ let AppComponent = class AppComponent {
         this.cs.setModal(true);
         this.cs.setEnableLoginWindow(true);
     }
+    onLogout() {
+        this.cs.setUserLoggedIn(false);
+        window.sessionStorage.clear();
+        window.localStorage.clear();
+    }
     onLoginFormSubmit() {
+        if (!this.loginForm.valid) {
+            this.cs.showInfoMessage("Please Fill all the fields and try again", false);
+        }
         this.cs.webServiceCall("post", "user/login", this.loginForm.value).subscribe(data => {
-            console.log(data);
+            this.cs.setUserLoggedIn(true);
+            this.cs.setUser(data);
+            this.cs.setModal(false);
+        }, err => {
+            this.cs.setUserLoggedIn(false);
         });
     }
 };
@@ -523,6 +558,8 @@ let CommonService = class CommonService {
         this.http = http;
         this._modal = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
         this._enableLoginWindow = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
+        this._isLoggedIn = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
+        this._infoMessage = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]({});
     }
     setModal(val) {
         this._modal.next(val);
@@ -530,12 +567,35 @@ let CommonService = class CommonService {
     setEnableLoginWindow(val) {
         this._enableLoginWindow.next(val);
     }
+    setUserLoggedIn(val) {
+        this._isLoggedIn.next(val);
+    }
+    setUser(data) {
+        this.NAME = data["name"];
+        this.EMAIL = data["email"];
+        this.TOKEN = data["token"];
+        window.sessionStorage.setItem("name", data["name"]);
+        window.sessionStorage.setItem("email", data["email"]);
+        if (data["token"])
+            window.localStorage.setItem("token", data["token"]);
+    }
+    showInfoMessage(msg, type) {
+        let message = {
+            type: type,
+            msg: msg
+        };
+        this._infoMessage.next(message);
+    }
     webServiceCall(method, url, payload) {
+        let header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({ 'Authorization': "Bearer " + window.localStorage.getItem("token") });
+        const options = {
+            headers: header
+        };
         switch (method) {
             case "get":
-                return this.http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].serviceURL + url);
+                return this.http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].serviceURL + url, options);
             case "post":
-                return this.http.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].serviceURL + url, payload);
+                return this.http.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].serviceURL + url, payload, options);
         }
     }
 };
@@ -569,7 +629,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const environment = {
     production: false,
-    serviceURL: "http://inv-service-invoice.apps.us-east-1.starter.openshift-online.com/"
+    serviceURL: "https://cors-anywhere.herokuapp.com/http://inv-service-invoice.apps.us-east-1.starter.openshift-online.com/"
 };
 /*
  * For easier debugging in development mode, you can import the following file
