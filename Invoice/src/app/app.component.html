@@ -10,6 +10,9 @@
     </ul>
 </nav>
 
+<!-- Router Outlet -->
+<router-outlet></router-outlet>
+
 <!-- Info Message -->
 <div class="info-message" [ngClass]="showInfoMessage ? 'show-info' : ''">
     <div *ngIf="!infoMessageType" class="error"><h6>ERROR</h6><p>{{ infoMessage }}</p></div>
@@ -46,5 +49,3 @@
         </form>
     </div>
 </div>
-
-<router-outlet></router-outlet>

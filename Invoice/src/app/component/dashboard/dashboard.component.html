@@ -1,0 +1,7 @@
+<div class="dashboard">
+    <div class="shortcut-menu">
+        <div><button class="btn btn-primary" (click)="nameFeild = !nameFeild">New <i class="fa fa-plus" aria-hidden="true"></i></button></div>
+        <div *ngIf="nameFeild"><input [(ngModel)]="projName" type="text" id="projname" placeholder="project name"></div>
+        <div *ngIf="nameFeild" (click)="createProject()"><button class="btn btn-primary">Create</button></div>
+    </div>
+</div>

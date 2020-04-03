@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,19 @@ export class CommonService {
   public _isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public _infoMessage: BehaviorSubject<{}> = new BehaviorSubject<{}>({});
 
+  public isLoggedIn:boolean;
+  public currentProj:Object;
+
   public NAME: string;
   public EMAIL: string;
   public TOKEN: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private route:Router) {
+    this._isLoggedIn.subscribe(data => {
+      if(data) route.navigateByUrl("/dashboard")
+      this.isLoggedIn = data
+    });
+  }
 
   public setModal(val: boolean) {
     this._modal.next(val);
@@ -48,7 +57,7 @@ export class CommonService {
     this._infoMessage.next(message);
   }
 
-  public webServiceCall(method: string, url: string, payload?: JSON) {
+  public webServiceCall(method: string, url: string, payload?: Object) {
     let header = new HttpHeaders({ 'Authorization': "Bearer " + window.localStorage.getItem("token") });
     const options = {
       headers: header
