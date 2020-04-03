@@ -117,7 +117,7 @@ var AppComponent = /** @class */ (function () {
             var now = new Date();
             var dif = bDay.getTime() - now.getTime();
             if (dif > 0)
-                _this.timer = true;
+                _this.timer = false;
             else
                 _this.timer = true;
             _this.hours = Math.abs(23 - now.getHours());
