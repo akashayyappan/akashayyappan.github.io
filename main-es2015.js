@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg-container\">\n  <img class=\"bg-image\" src=\"assets\\background.jpg\" alt=\"background\">\n  <img class=\"bg-popper\" src=\"assets\\popper.png\" alt=\"popper\">\n</div>\n\n<div class=\"header\">\n  <span>MADDY</span>\n</div>\n\n<div class=\"con\" [style.height]=\"height + 'px'\">\n  <div class=\"timer-container\" *ngIf=\"!timer\">\n    <span class=\"timer h\">{{ hours }} h</span>\n    <span class=\"timer m\">{{ minutes }} m</span>\n    <span class=\"timer s\">{{ seconds }} s</span>\n  </div>\n\n  <div class=\"timer-container\" *ngIf=\"timer\">\n    <img class=\"message\" src=\"assets\\bday.png\" alt=\"wish\">\n  </div>\n\n  <div *ngIf=\"Data && timer\">\n    <div class=\"c-set\" *ngFor=\"let d of Data.data\">\n      <img class=\"c-pic\" [src]=\"d.pic\">\n      <span class=\"c-msg\">{{ d.msg }}</span>\n      <span class=\"c-name\" style=\"float: right;\">- {{ d.name }}</span>\n    </div>\n  </div>\n</div>\n\n<div class=\"surprise\" *ngIf=\"!timer\">\n  <div class=\"surprise-text\">\n    We have a Suprise for you!.<br>Check at 12AM <br>04 04 2020\n  </div>\n</div>"
+module.exports = "<div class=\"bg-container\">\n  <img class=\"bg-image\" src=\"assets\\background.jpg\" alt=\"background\">\n  <img class=\"bg-popper\" src=\"assets\\popper.png\" alt=\"popper\">\n</div>\n\n<div class=\"header\">\n  <span>MADDY</span>\n</div>\n\n<div class=\"con\" [style.height]=\"height + 'px'\">\n  <div class=\"timer-container\" *ngIf=\"!timer\">\n    <span class=\"timer h\">{{ hours }} h</span>\n    <span class=\"timer m\">{{ minutes }} m</span>\n    <span class=\"timer s\">{{ seconds }} s</span>\n  </div>\n\n  <div class=\"timer-container\" *ngIf=\"timer\">\n    <img class=\"message\" src=\"assets\\bday.png\" alt=\"wish\">\n  </div>\n\n  <div *ngIf=\"Data && timer\">\n    <div class=\"c-set\" *ngFor=\"let d of Data.data\">\n      <img class=\"c-pic\" [src]=\"d.pic\">\n      <span class=\"c-msg\" [innerHTML]=\"d.msg\"></span>\n      <span class=\"c-name\" style=\"float: right;\">- {{ d.name }}</span>\n    </div>\n  </div>\n</div>\n\n<div class=\"surprise\" *ngIf=\"!timer\">\n  <div class=\"surprise-text\">\n    We have a Suprise for you!.<br>Check at 12AM <br>04 04 2020\n  </div>\n</div>"
 
 /***/ }),
 
@@ -113,7 +113,7 @@ let AppComponent = class AppComponent {
             let now = new Date();
             let dif = bDay.getTime() - now.getTime();
             if (dif > 0)
-                this.timer = false;
+                this.timer = true;
             else
                 this.timer = true;
             this.hours = Math.abs(23 - now.getHours());
