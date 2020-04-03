@@ -113,7 +113,7 @@ let AppComponent = class AppComponent {
             let now = new Date();
             let dif = bDay.getTime() - now.getTime();
             if (dif > 0)
-                this.timer = true;
+                this.timer = false;
             else
                 this.timer = true;
             this.hours = Math.abs(23 - now.getHours());
